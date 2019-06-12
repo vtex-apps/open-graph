@@ -968,10 +968,25 @@
   resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.26.6.tgz#1aaf5060da8ebb99529420b6eb997c50f74c218e"
   integrity sha512-AmTHEkGo/EEufYY7MRqlgI0HLsLiAnc02pKOTVzE2D9IHf6yH2Xz71ompfEnduuaFGplYrtIOFOUOLs0AbMj9Q==
 
+"@types/react-helmet@^5.0.8":
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-5.0.8.tgz#f080eea6652e44f60b4574463d238f268d81d9af"
+  integrity sha512-ZTr12eDAYI0yUiMx1K82EHqRYa8J1BOOLus+0gL+AkksUiIPwLE0wLiXa9FNqD8r9GXAi+yRPZImkRh1JNlTkQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-intl@^2.3.17":
   version "2.3.17"
   resolved "https://registry.yarnpkg.com/@types/react-intl/-/react-intl-2.3.17.tgz#e1fc6e46e8af58bdef9531259d509380a8a99e8e"
   integrity sha512-FGd6J1GQ7zvl1GZ3BBev83B7nfak8dqoR2PZ+l5MoisKMpd4xOLhZJC1ugpmk3Rz5F85t6HbOg9mYqXW97BsNA==
+
+"@types/react@*":
+  version "16.8.19"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.19.tgz#629154ef05e2e1985cdde94477deefd823ad9be3"
+  integrity sha512-QzEzjrd1zFzY9cDlbIiFvdr+YUmefuuRYrPxmkwG0UQv5XF35gFIi7a95m1bNVcFU0VimxSZ5QVGSiBmlggQXQ==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
 
 "@types/react@^16.8.10", "@types/react@^16.8.7":
   version "16.8.13"
@@ -1023,15 +1038,10 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@vtex/css-handles@^1.0.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@vtex/css-handles/-/css-handles-1.1.0.tgz#c49998230e7b1576bef4ea6125471137a54c6c86"
-  integrity sha512-GP5ONxBimQoKRIW8WjUCI5/HU13JdMTxPw1aoumWcDv3ycUu13IR8HzzIuTM+iFZE9ctvGZfVCq9FXqQ747yNw==
-
-"@vtex/test-tools@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@vtex/test-tools/-/test-tools-0.2.0.tgz#3bb202a918bd60201ae23c55901d7308e638743c"
-  integrity sha512-QzARupZKVFcLG/rECjGc6LOZTfBsvu2255D4jBhtsSxewIxJC2N9kAKPvHyzRj2RoINPiJzjJnOOArXJDnbl1A==
+"@vtex/test-tools@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@vtex/test-tools/-/test-tools-0.3.2.tgz#f9423c98f1960b226d18dfe59d6d9c430e14d530"
+  integrity sha512-cVPc6sBymoHUvYbzEDhBmO+0Ga1JZQNZxtapIdG80TXwnZrFTJRueSp9uRcJAPOzQjwSvbknG7wXCeuHS4j7OA==
   dependencies:
     "@babel/core" "^7.3.4"
     "@babel/plugin-proposal-class-properties" "^7.3.4"
@@ -1521,11 +1531,6 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
-
-classnames@^2.2.6:
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
-  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
 
 cli-cursor@^2.1.0:
   version "2.1.0"
