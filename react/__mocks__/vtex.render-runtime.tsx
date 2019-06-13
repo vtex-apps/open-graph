@@ -4,7 +4,9 @@ export const Helmet: FunctionComponent<HelmetProps> = ({ meta }) => {
   return (
     <Fragment>
       {meta.map(tag => (
-        <span key={tag.name} data-testid={tag.name}>{tag.content}</span>
+        <span key={tag.name + tag.content} data-testid={tag.name}>
+          {tag.content}
+        </span>
       ))}
     </Fragment>
   )
@@ -18,3 +20,10 @@ interface MetaTag {
   name: string
   content: string
 }
+
+export const useRuntime = () => ({
+  culture: {
+    locale: 'en-US',
+    currency: 'USD',
+  },
+})
