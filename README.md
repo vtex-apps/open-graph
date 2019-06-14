@@ -1,3 +1,3 @@
-# Facebook Open Graph
+# Open Graph
 
-> Implements Facebook Open Graph meta tags.
+> Implements Open Graph meta tags.

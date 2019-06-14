@@ -1,9 +1,9 @@
 {
   "vendor": "vtex",
-  "name": "facebook-open-graph",
+  "name": "open-graph",
   "version": "0.0.1",
-  "title": "Facebook Open Graph",
-  "description": "Facebook Open Graph",
+  "title": "Open Graph",
+  "description": "Open Graph tags",
   "builders": {
     "react": "3.x"
   },
