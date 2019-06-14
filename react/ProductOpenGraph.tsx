@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext, Fragment } from 'react'
+import React, { useContext, Fragment } from 'react'
 import {
   Helmet,
   useRuntime,
@@ -12,7 +12,12 @@ interface MetaTag {
   content: string
 }
 
-const ProductOpenGraph: FunctionComponent = () => {
+declare var global: {
+  __hostname__: string
+  __pathname__: string
+}
+
+function ProductOpenGraph() {
   const productContext = useContext(ProductContext) as ProductContext
   const runtime = useRuntime() as RenderContext
 
@@ -27,8 +32,8 @@ const ProductOpenGraph: FunctionComponent = () => {
     culture: { currency },
   } = runtime
 
-  const hostname = canUseDOM ? location.hostname : (global as any).__hostname__
-  const pathname = canUseDOM ? location.pathname : (global as any).__pathname__
+  const hostname = canUseDOM ? window.location.hostname : global.__hostname__
+  const pathname = canUseDOM ? window.location.pathname : global.__pathname__
   const url = `https://${hostname}${pathname}`
 
   const metaTags = [
@@ -52,7 +57,7 @@ const ProductOpenGraph: FunctionComponent = () => {
   )
 }
 
-const productImage = (selectedItem?: SKU): (MetaTag | {})[] => {
+function productImage(selectedItem?: SKU): (MetaTag | {})[] {
   if (!selectedItem) {
     return []
   }
@@ -67,7 +72,7 @@ const productImage = (selectedItem?: SKU): (MetaTag | {})[] => {
     )
 }
 
-const productAvailability = (selectedItem?: SKU): MetaTag => {
+function productAvailability(selectedItem?: SKU): MetaTag {
   const seller =
     selectedItem &&
     selectedItem.sellers.find(
@@ -79,7 +84,7 @@ const productAvailability = (selectedItem?: SKU): MetaTag => {
   return { name: 'product:availability', content: `${availability}` }
 }
 
-const productPrice = (selectedItem?: SKU): MetaTag | null => {
+function productPrice(selectedItem?: SKU): MetaTag | null {
   const seller =
     selectedItem &&
     selectedItem.sellers.find(
