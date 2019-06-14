@@ -125,3 +125,48 @@ test('should render images', () => {
   expect(tags[1].innerHTML).toBe(image2)
   expect(tags[2].innerHTML).toBe(image3)
 })
+
+test('should have all expected tags', () => {
+  const title = 'Title'
+  const brand = 'Nike'
+  const refId = 'ref-1'
+  const skuId = 'sku-1'
+  const imageUrl = 'image-url'
+  const price = 10.5
+
+  const productContext = {
+    product: {
+      titleTag: title,
+      brand,
+      productReference: refId,
+    },
+    selectedItem: {
+      itemId: skuId,
+      images: [{ imageUrl }],
+      sellers: [
+        {
+          commertialOffer: {
+            Price: price,
+            AvailableQuantity: 1,
+          },
+        },
+      ],
+    },
+  }
+
+  const { getByTestId } = renderComponent(productContext)
+
+  const value = (type: string) => getByTestId(type).innerHTML
+
+  expect(value('og:type')).toBe('product')
+  expect(value('og:title')).toBe(title)
+  expect(value('og:url')).toBeDefined()
+  expect(value('product:sku')).toBe(skuId)
+  expect(value('product:condition')).toBe('new')
+  expect(value('product:brand')).toBe(brand)
+  expect(value('product:retailer_item_id')).toBe(refId)
+  expect(value('product:price:currency')).toBe('USD')
+  expect(value('og:image')).toBe(imageUrl)
+  expect(value('product:availability')).toBe('instock')
+  expect(value('product:price:amount')).toBe(`${price}`)
+})
