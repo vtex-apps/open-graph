@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "open-graph",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "title": "Open Graph",
   "description": "Open Graph tags",
   "builders": {
