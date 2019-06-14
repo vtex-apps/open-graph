@@ -8,7 +8,7 @@ import {
 import { ProductContext, SKU } from 'vtex.product-context'
 
 interface MetaTag {
-  name: string
+  property: string
   content: string
 }
 
@@ -37,14 +37,16 @@ function ProductOpenGraph() {
   const url = `https://${hostname}${pathname}`
 
   const metaTags = [
-    { name: 'og:type', content: 'product' },
-    { name: 'og:title', content: product.titleTag },
-    { name: 'og:url', content: url },
-    selectedItem ? { name: 'product:sku', content: selectedItem.itemId } : null,
-    { name: 'product:condition', content: 'new' },
-    { name: 'product:brand', content: product.brand },
-    { name: 'product:retailer_item_id', content: product.productReference },
-    { name: 'product:price:currency', content: `${currency}` },
+    { property: 'og:type', content: 'product' },
+    { property: 'og:title', content: product.titleTag },
+    { property: 'og:url', content: url },
+    selectedItem
+      ? { property: 'product:sku', content: selectedItem.itemId }
+      : null,
+    { property: 'product:condition', content: 'new' },
+    { property: 'product:brand', content: product.brand },
+    { property: 'product:retailer_item_id', content: product.productReference },
+    { property: 'product:price:currency', content: `${currency}` },
     ...productImage(selectedItem),
     productAvailability(selectedItem),
     productPrice(selectedItem),
@@ -67,7 +69,10 @@ function productImage(selectedItem?: SKU): (MetaTag | {})[] {
   return selectedItem.images
     .slice(0, LIMIT_IMAGES)
     .reduce<MetaTag[]>(
-      (acc, image) => [...acc, { name: 'og:image', content: image.imageUrl }],
+      (acc, image) => [
+        ...acc,
+        { property: 'og:image', content: image.imageUrl },
+      ],
       []
     )
 }
@@ -81,7 +86,7 @@ function productAvailability(selectedItem?: SKU): MetaTag {
 
   const availability = seller ? 'instock' : 'oos'
 
-  return { name: 'product:availability', content: `${availability}` }
+  return { property: 'product:availability', content: `${availability}` }
 }
 
 function productPrice(selectedItem?: SKU): MetaTag | null {
@@ -96,7 +101,7 @@ function productPrice(selectedItem?: SKU): MetaTag | null {
   }
 
   return {
-    name: 'product:price:amount',
+    property: 'product:price:amount',
     content: `${seller.commertialOffer.Price}`,
   }
 }

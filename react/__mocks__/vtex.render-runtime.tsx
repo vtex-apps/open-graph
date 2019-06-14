@@ -4,7 +4,7 @@ export const Helmet: FunctionComponent<HelmetProps> = ({ meta }) => {
   return (
     <Fragment>
       {meta.map(tag => (
-        <span key={tag.name + tag.content} data-testid={tag.name}>
+        <span key={tag.property + tag.content} data-testid={tag.property}>
           {tag.content}
         </span>
       ))}
@@ -17,7 +17,7 @@ interface HelmetProps {
 }
 
 interface MetaTag {
-  name: string
+  property: string
   content: string
 }
 
