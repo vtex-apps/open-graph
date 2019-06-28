@@ -6,6 +6,7 @@ declare module 'vtex.render-runtime' {
       locale: string
       currency: string
     }
+    getSettings: (app: string) => any
   }
 
   export const NoSSR: ReactElement
