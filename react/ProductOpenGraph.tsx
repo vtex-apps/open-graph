@@ -30,15 +30,34 @@ function ProductOpenGraph() {
   const { product, selectedItem } = productContext
   const {
     culture: { currency },
+    getSettings,
   } = runtime
 
   const hostname = canUseDOM ? window.location.hostname : global.__hostname__
   const pathname = canUseDOM ? window.location.pathname : global.__pathname__
   const url = `https://${hostname}${pathname}`
 
+  const { titleTag = '', productName = '' } = product || {}
+
+  let title = titleTag || productName
+
+  try {
+    const settings = getSettings('vtex.store')
+    if (settings) {
+      const { storeName, titleTag: storeTitleTag } = settings
+      const suffix =
+        (storeTitleTag || storeName) && ` - ${storeTitleTag || storeName}`
+      if (suffix) {
+        title += suffix
+      }
+    }
+  } catch (e) {
+    console.error('Failed to suffix store name in title.', e)
+  }
+
   const metaTags = [
     { property: 'og:type', content: 'product' },
-    { property: 'og:title', content: product.titleTag },
+    { property: 'og:title', content: title },
     { property: 'og:url', content: url },
     selectedItem
       ? { property: 'product:sku', content: selectedItem.itemId }
