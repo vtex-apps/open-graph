@@ -5,7 +5,8 @@
   "title": "Open Graph",
   "description": "Open Graph tags",
   "builders": {
-    "react": "3.x"
+    "react": "3.x",
+    "docs": "0.x"
   },
   "mustUpdateAt": "2019-04-02",
   "scripts": {
