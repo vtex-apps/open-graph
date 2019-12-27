@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.5] - 2019-12-27
+
 ## [1.0.4] - 2019-10-28
 ### Chore
 - Rebuild to enable lazy evaluation of native-types entrypoints.
