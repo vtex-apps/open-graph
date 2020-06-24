@@ -138,6 +138,7 @@ test('should have all expected tags', () => {
   const refId = 'ref-1'
   const skuId = 'sku-1'
   const imageUrl = 'image-url'
+  const description = 'Nice shoes'
   const price = 10.5
 
   const productContext = {
@@ -145,6 +146,7 @@ test('should have all expected tags', () => {
       titleTag: title,
       brand,
       productReference: refId,
+      metaTagDescription: description,
     },
     selectedItem: {
       itemId: skuId,
@@ -167,6 +169,7 @@ test('should have all expected tags', () => {
   expect(value('og:type')).toBe('product')
   expect(value('og:title')).toBe(`${title} - Store Components`)
   expect(value('og:url')).toBeDefined()
+  expect(value('og:description')).toBe(description)
   expect(value('product:sku')).toBe(skuId)
   expect(value('product:condition')).toBe('new')
   expect(value('product:brand')).toBe(brand)

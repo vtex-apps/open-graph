@@ -62,6 +62,7 @@ function ProductOpenGraph() {
     { property: 'og:type', content: 'product' },
     { property: 'og:title', content: title },
     { property: 'og:url', content: url },
+    { property: 'og:description', content: product.metaTagDescription },
     selectedItem
       ? { property: 'product:sku', content: selectedItem.itemId }
       : null,
