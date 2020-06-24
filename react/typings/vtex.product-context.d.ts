@@ -23,16 +23,16 @@ declare module 'vtex.product-context' {
       href: string
     }
     brand: string
-    properties: {
+    properties: Array<{
       name: string
       values: string
-    }[]
+    }>
     specificationGroups: {
       name: string
-      specifications: {
+      specifications: Array<{
         name: string
         values: string
-      }[]
+      }>
     }
     items: SKU[]
     itemMetadata: {
@@ -43,14 +43,14 @@ declare module 'vtex.product-context' {
         seller: string
       }
     }
-    productClusters: {
+    productClusters: Array<{
       id: string
       name: string
-    }[]
-    clusterHighlights: {
+    }>
+    clusterHighlights: Array<{
       id: string
       name: string
-    }[]
+    }>
   }
 
   interface SKU {
@@ -59,20 +59,20 @@ declare module 'vtex.product-context' {
     nameComplete: string
     complementName: string
     ean: string
-    referenceId: {
+    referenceId: Array<{
       Key
       Value
-    }[]
+    }>
     measurementUnit: string
     unitMultiplier: string
-    images: {
+    images: Array<{
       imageId: string
       imageLabel: string
       imageTag: string
       imageUrl: string
       imageText: string
-    }[]
-    sellers: {
+    }>
+    sellers: Array<{
       sellerId: string
       sellerName: string
       addToCartLink: string
@@ -89,19 +89,19 @@ declare module 'vtex.product-context' {
         AvailableQuantity: number
         Tax: string
         CacheVersionUsedToCallCheckout: string
-        Installments: {
+        Installments: Array<{
           Value: number
           InterestRate: number
           TotalValuePlusInterestRate: number
           NumberOfInstallments: number
           Name: string
-        }[]
+        }>
       }
-    }[]
-    variations: {
+    }>
+    variations: Array<{
       name: string
       values: string
-    }[]
+    }>
   }
 
   export const ProductContext: Context<ProductContext>
