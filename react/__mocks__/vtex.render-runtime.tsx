@@ -26,4 +26,8 @@ export const useRuntime = () => ({
     locale: 'en-US',
     currency: 'USD',
   },
+  getSettings: (_: string) => ({
+    storeName: 'storecomponents',
+    titleTag: 'Store Components',
+  }),
 })

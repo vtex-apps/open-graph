@@ -1,9 +1,10 @@
 import React from 'react'
 import { render } from '@vtex/test-tools/react'
 import { ProductContext } from 'vtex.product-context'
+
 import ProductOpenGraph from '../ProductOpenGraph'
 
-const renderComponent = (productContext: any) => {
+const renderComponent = (productContext: object) => {
   const helpers = render(
     <ProductContext.Provider value={productContext}>
       <ProductOpenGraph />
@@ -20,6 +21,7 @@ test('should have a brand', () => {
       brand,
     },
   }
+
   const { getByTestId } = renderComponent(productContext)
 
   const tag = getByTestId('product:brand')
@@ -41,6 +43,7 @@ test('should show availability with instock when it has item available', () => {
       ],
     },
   }
+
   const { getByTestId } = renderComponent(productContext)
 
   const tag = getByTestId('product:availability')
@@ -62,6 +65,7 @@ test('should show availability with oos when no item is available', () => {
       ],
     },
   }
+
   const { getByTestId } = renderComponent(productContext)
 
   const tag = getByTestId('product:availability')
@@ -85,6 +89,7 @@ test('should render price', () => {
       ],
     },
   }
+
   const { getByTestId } = renderComponent(productContext)
 
   const tag = getByTestId('product:price:amount')
@@ -116,6 +121,7 @@ test('should render images', () => {
       ],
     },
   }
+
   const { getAllByTestId } = renderComponent(productContext)
 
   const tags = getAllByTestId('og:image')
@@ -159,7 +165,7 @@ test('should have all expected tags', () => {
   const value = (type: string) => getByTestId(type).innerHTML
 
   expect(value('og:type')).toBe('product')
-  expect(value('og:title')).toBe(title)
+  expect(value('og:title')).toBe(`${title} - Store Components`)
   expect(value('og:url')).toBeDefined()
   expect(value('product:sku')).toBe(skuId)
   expect(value('product:condition')).toBe('new')
