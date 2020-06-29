@@ -12,13 +12,14 @@ interface MetaTag {
   content: string
 }
 
-function SearchOpenGraph(props: any) {
-  const hasValues = Boolean(props.meta)
-
-  if (!hasValues) {
-    return null
+interface Props {
+  meta: {
+    title: string
+    description: string
   }
+}
 
+function SearchOpenGraph(props: Props) {
   const hostname = canUseDOM ? window.location.hostname : global.__hostname__
   const pathname = canUseDOM ? window.location.pathname : global.__pathname__
   const url = `https://${hostname}${pathname}`
