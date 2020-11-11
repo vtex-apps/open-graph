@@ -74,7 +74,7 @@ test('should show availability with oos when no item is available', () => {
 })
 
 test('should render price', () => {
-  const price = 10
+  const spotPrice = 10
   const productContext = {
     product: {},
     selectedItem: {
@@ -82,7 +82,7 @@ test('should render price', () => {
       sellers: [
         {
           commertialOffer: {
-            Price: price,
+            spotPrice,
             AvailableQuantity: 1,
           },
         },
@@ -94,7 +94,7 @@ test('should render price', () => {
 
   const tag = getByTestId('product:price:amount')
 
-  expect(tag.innerHTML).toBe(`${price}`)
+  expect(tag.innerHTML).toBe(`${spotPrice}`)
 })
 
 test('should render images', () => {
@@ -139,7 +139,7 @@ test('should have all expected tags', () => {
   const skuId = 'sku-1'
   const imageUrl = 'image-url'
   const description = 'Nice shoes'
-  const price = 10.5
+  const spotPrice = 10.5
 
   const productContext = {
     product: {
@@ -154,7 +154,7 @@ test('should have all expected tags', () => {
       sellers: [
         {
           commertialOffer: {
-            Price: price,
+            spotPrice,
             AvailableQuantity: 1,
           },
         },
@@ -177,5 +177,5 @@ test('should have all expected tags', () => {
   expect(value('product:price:currency')).toBe('USD')
   expect(value('og:image')).toBe(imageUrl)
   expect(value('product:availability')).toBe('instock')
-  expect(value('product:price:amount')).toBe(`${price}`)
+  expect(value('product:price:amount')).toBe(`${spotPrice}`)
 })
