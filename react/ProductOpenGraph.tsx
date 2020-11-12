@@ -121,7 +121,7 @@ function productPrice(selectedItem?: SKU): MetaTag | null {
 
   return {
     property: 'product:price:amount',
-    content: `${seller.commertialOffer.Price}`,
+    content: `${seller.commertialOffer.spotPrice}`,
   }
 }
 

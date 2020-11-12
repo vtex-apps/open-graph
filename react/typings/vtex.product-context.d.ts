@@ -83,6 +83,7 @@ declare module 'vtex.product-context' {
         }
         Price: string
         ListPrice: string
+        spotPrice: string
         PriceWithoutDiscount: string
         RewardValue: string
         PriceValidUntil: string
