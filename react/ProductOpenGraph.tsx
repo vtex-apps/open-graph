@@ -70,6 +70,7 @@ function ProductOpenGraph() {
     { property: 'product:brand', content: product.brand },
     { property: 'product:retailer_item_id', content: product.productReference },
     { property: 'product:price:currency', content: `${currency}` },
+    { property: 'product:item_group_id', content: product.productId },
     ...productImage(selectedItem),
     productAvailability(selectedItem),
     productPrice(selectedItem),
