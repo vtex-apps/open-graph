@@ -98,6 +98,7 @@ function productImage(selectedItem?: SKU): Array<MetaTag | {}> {
       ],
       []
     )
+    .reverse()
 }
 
 function productAvailability(selectedItem?: SKU): MetaTag {
