@@ -127,9 +127,9 @@ test('should render images', () => {
   const tags = getAllByTestId('og:image')
 
   expect(tags).toHaveLength(3)
-  expect(tags[0].innerHTML).toBe(image1)
+  expect(tags[2].innerHTML).toBe(image1)
   expect(tags[1].innerHTML).toBe(image2)
-  expect(tags[2].innerHTML).toBe(image3)
+  expect(tags[0].innerHTML).toBe(image3)
 })
 
 test('should have all expected tags', () => {
