@@ -11,24 +11,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `canonical` prop to `SearchOpenGraph` to support consistency between `<link rel="canonical">` tags and `og:url` metatags
 
 ## [1.2.1] - 2020-11-12
+
 ### Fixed
 - Send spotPrice in product price.
 
 ## [1.2.0] - 2020-06-29
+
 ### Added
 - `HomeOpenGraph` and `SearchOpenGraph` components.
 
 ## [1.1.0] - 2020-06-24
+
 ### Added
 - `og:description` tag to all product pages.
 
 ## [1.0.6] - 2020-06-24
+
 ### Changed
 - ESlint and testing setup.
 
 ## [1.0.5] - 2019-12-27
 
 ## [1.0.4] - 2019-10-28
+
 ### Chore
 - Rebuild to enable lazy evaluation of native-types entrypoints.
 
