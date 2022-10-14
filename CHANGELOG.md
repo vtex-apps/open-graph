@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- `canonical` prop to `SearchOpenGraph` to support consistency between `<link rel="canonical">` tags and `og:url` metatags
+
 ## [1.2.1] - 2020-11-12
 ### Fixed
 - Send spotPrice in product price.
