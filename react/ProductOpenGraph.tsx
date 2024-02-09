@@ -6,6 +6,7 @@ import {
   canUseDOM,
 } from 'vtex.render-runtime'
 import { ProductContext, SKU } from 'vtex.product-context'
+
 import useAppSettings from './hooks/useAppSettings'
 
 // eslint-disable-next-line no-var
@@ -126,7 +127,7 @@ function productPrice(selectedItem?: SKU): MetaTag | null {
 
   return {
     property: 'product:price:amount',
-    content: `${seller.commertialOffer.spotPrice}`
+    content: `${seller.commertialOffer.spotPrice}`,
   }
 }
 
