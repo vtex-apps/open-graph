@@ -121,7 +121,7 @@ function productPrice(selectedItem?: SKU): MetaTag | null {
     return null
   }
 
-  if(disableOffers){
+  if (disableOffers) {
     return null
   }
 
