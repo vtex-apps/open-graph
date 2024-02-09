@@ -1,0 +1,6 @@
+query getSettings {
+  publicSettingsForApp(app: "vtex.open-graph", version: "1.x")
+    @context(provider: "vtex.apps-graphql") {
+    message
+  }
+}

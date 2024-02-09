@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Settings option to hide price.
+
 ## [1.2.2] - 2022-10-14
 
 ### Added

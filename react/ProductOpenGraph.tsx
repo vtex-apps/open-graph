@@ -7,6 +7,8 @@ import {
 } from 'vtex.render-runtime'
 import { ProductContext, SKU } from 'vtex.product-context'
 
+import useAppSettings from './hooks/useAppSettings'
+
 // eslint-disable-next-line no-var
 declare var global: {
   __hostname__: string
@@ -21,7 +23,6 @@ interface MetaTag {
 function ProductOpenGraph() {
   const productContext = useContext(ProductContext) as ProductContext
   const runtime = useRuntime() as RenderContext
-
   const hasValue = productContext?.product
 
   if (!hasValue) {
@@ -111,11 +112,16 @@ function productAvailability(selectedItem?: SKU): MetaTag {
 }
 
 function productPrice(selectedItem?: SKU): MetaTag | null {
+  const { disableOffers } = useAppSettings()
   const seller = selectedItem?.sellers.find(
     ({ commertialOffer }) => commertialOffer.AvailableQuantity > 0
   )
 
   if (!seller) {
+    return null
+  }
+
+  if (disableOffers) {
     return null
   }
 
