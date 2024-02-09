@@ -6,6 +6,7 @@ import {
   canUseDOM,
 } from 'vtex.render-runtime'
 import { ProductContext, SKU } from 'vtex.product-context'
+import useAppSettings from './hooks/useAppSettings'
 
 // eslint-disable-next-line no-var
 declare var global: {
@@ -21,7 +22,6 @@ interface MetaTag {
 function ProductOpenGraph() {
   const productContext = useContext(ProductContext) as ProductContext
   const runtime = useRuntime() as RenderContext
-
   const hasValue = productContext?.product
 
   if (!hasValue) {
@@ -101,6 +101,7 @@ function productImage(selectedItem?: SKU): Array<MetaTag | {}> {
 }
 
 function productAvailability(selectedItem?: SKU): MetaTag {
+  
   const seller = selectedItem?.sellers.find(
     ({ commertialOffer }) => commertialOffer.AvailableQuantity > 0
   )
@@ -111,6 +112,7 @@ function productAvailability(selectedItem?: SKU): MetaTag {
 }
 
 function productPrice(selectedItem?: SKU): MetaTag | null {
+  const {disableOffers} = useAppSettings()
   const seller = selectedItem?.sellers.find(
     ({ commertialOffer }) => commertialOffer.AvailableQuantity > 0
   )
@@ -119,9 +121,13 @@ function productPrice(selectedItem?: SKU): MetaTag | null {
     return null
   }
 
+  if(disableOffers){
+    return null
+  }
+
   return {
-    property: 'product:price:amount',
-    content: `${seller.commertialOffer.spotPrice}`,
+    property: 'product:price:amount'
+    ,content: `${seller.commertialOffer.spotPrice}`,
   }
 }
 
