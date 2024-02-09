@@ -101,7 +101,6 @@ function productImage(selectedItem?: SKU): Array<MetaTag | {}> {
 }
 
 function productAvailability(selectedItem?: SKU): MetaTag {
-  
   const seller = selectedItem?.sellers.find(
     ({ commertialOffer }) => commertialOffer.AvailableQuantity > 0
   )
@@ -112,7 +111,7 @@ function productAvailability(selectedItem?: SKU): MetaTag {
 }
 
 function productPrice(selectedItem?: SKU): MetaTag | null {
-  const {disableOffers} = useAppSettings()
+  const { disableOffers } = useAppSettings()
   const seller = selectedItem?.sellers.find(
     ({ commertialOffer }) => commertialOffer.AvailableQuantity > 0
   )
@@ -126,8 +125,8 @@ function productPrice(selectedItem?: SKU): MetaTag | null {
   }
 
   return {
-    property: 'product:price:amount'
-    ,content: `${seller.commertialOffer.spotPrice}`,
+    property: 'product:price:amount',
+    content: `${seller.commertialOffer.spotPrice}`
   }
 }
 
