@@ -9,7 +9,7 @@ interface Settings {
 }
 
 const useAppSettings = (): Settings => {
-  const { data } = useQuery(GET_SETTINGS, { ssr: false })
+  const { data } = useQuery(GET_SETTINGS, {})
 
   if (data?.publicSettingsForApp?.message) {
     const { disableOffers } = JSON.parse(data.publicSettingsForApp.message)

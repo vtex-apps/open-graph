@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Remove SSR settings
+
 ## [1.3.0] - 2024-02-09
 
 ### Added
