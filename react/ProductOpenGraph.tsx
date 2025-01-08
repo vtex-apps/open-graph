@@ -5,7 +5,7 @@ import {
   RenderContext,
   canUseDOM,
 } from 'vtex.render-runtime'
-import { ProductContext, SKU } from 'vtex.product-context'
+import { ProductContext, SKU, Product } from 'vtex.product-context'
 
 import useAppSettings from './hooks/useAppSettings'
 
@@ -75,10 +75,7 @@ function ProductOpenGraph() {
     { property: 'product:condition', content: 'new' },
     { property: 'product:brand', content: product.brand },
     { property: 'product:price:currency', content: `${currency}` },
-    ...product.categories.map(category => ({
-      property: 'product:category',
-      content: category,
-    })),
+    ...productCategories(product),
     ...productImage(selectedItem),
     productPrice({ selectedItem, disableOffers }),
     productAvailability(selectedItem),
@@ -142,6 +139,17 @@ function productPrice({
     property: 'product:price:amount',
     content: `${seller.commertialOffer.spotPrice}`,
   }
+}
+
+function productCategories(product?: Product) {
+  if (!product || !product.categories || !product.categories.length) {
+    return [null]
+  }
+
+  return product.categories.map(category => ({
+    property: 'product:category',
+    content: category,
+  }))
 }
 
 export default ProductOpenGraph
