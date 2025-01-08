@@ -71,10 +71,14 @@ function ProductOpenGraph() {
     selectedItem
       ? { property: 'product:retailer_part_no', content: selectedItem.itemId } // Used in the Synerise integration
       : null,
+    { property: 'product:retailer_item_id', content: product.productReference },
     { property: 'product:condition', content: 'new' },
     { property: 'product:brand', content: product.brand },
-    { property: 'product:retailer_item_id', content: product.productReference },
     { property: 'product:price:currency', content: `${currency}` },
+    ...product.categories.map(category => ({
+      property: 'product:category',
+      content: category,
+    })),
     ...productImage(selectedItem),
     productPrice({ selectedItem, disableOffers }),
     productAvailability(selectedItem),
