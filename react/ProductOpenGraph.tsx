@@ -21,6 +21,7 @@ interface MetaTag {
 }
 
 function ProductOpenGraph() {
+  const { disableOffers } = useAppSettings()
   const productContext = useContext(ProductContext) as ProductContext
   const runtime = useRuntime() as RenderContext
   const hasValue = productContext?.product
@@ -75,8 +76,8 @@ function ProductOpenGraph() {
     { property: 'product:retailer_item_id', content: product.productReference },
     { property: 'product:price:currency', content: `${currency}` },
     ...productImage(selectedItem),
+    productPrice({ selectedItem, disableOffers }),
     productAvailability(selectedItem),
-    productPrice(selectedItem),
   ].filter(Boolean) as MetaTag[]
 
   return (
@@ -114,8 +115,13 @@ function productAvailability(selectedItem?: SKU): MetaTag {
   return { property: 'product:availability', content: `${availability}` }
 }
 
-function productPrice(selectedItem?: SKU): MetaTag | null {
-  const { disableOffers } = useAppSettings()
+function productPrice({
+  selectedItem,
+  disableOffers,
+}: {
+  selectedItem?: SKU
+  disableOffers: boolean
+}): MetaTag | null {
   const seller = selectedItem?.sellers.find(
     ({ commertialOffer }) => commertialOffer.AvailableQuantity > 0
   )
