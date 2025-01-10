@@ -69,7 +69,7 @@ function ProductOpenGraph() {
       ? { property: 'product:sku', content: selectedItem.itemId }
       : null,
     selectedItem
-      ? { property: 'product:retailer_part_no', content: selectedItem.itemId } // Used in the Synerise integration
+      ? { property: 'product:retailer_part_no', content: product.productId } // Used in the Synerise integration
       : null,
     { property: 'product:retailer_item_id', content: product.productReference },
     { property: 'product:condition', content: 'new' },
