@@ -142,8 +142,8 @@ function productPrice({
 }
 
 function productCategories(product?: Product) {
-  if (!product || !product.categories || !product.categories.length) {
-    return [null]
+  if (!product?.categories?.length) {
+    return []
   }
 
   return product.categories.map(category => ({
