@@ -5,7 +5,7 @@ import {
   RenderContext,
   canUseDOM,
 } from 'vtex.render-runtime'
-import { ProductContext, SKU } from 'vtex.product-context'
+import { ProductContext, SKU, Product } from 'vtex.product-context'
 
 import useAppSettings from './hooks/useAppSettings'
 
@@ -21,6 +21,7 @@ interface MetaTag {
 }
 
 function ProductOpenGraph() {
+  const { disableOffers } = useAppSettings()
   const productContext = useContext(ProductContext) as ProductContext
   const runtime = useRuntime() as RenderContext
   const hasValue = productContext?.product
@@ -67,13 +68,17 @@ function ProductOpenGraph() {
     selectedItem
       ? { property: 'product:sku', content: selectedItem.itemId }
       : null,
+    selectedItem
+      ? { property: 'product:retailer_part_no', content: product.productId } // Used in the Synerise integration
+      : null,
+    { property: 'product:retailer_item_id', content: product.productReference },
     { property: 'product:condition', content: 'new' },
     { property: 'product:brand', content: product.brand },
-    { property: 'product:retailer_item_id', content: product.productReference },
     { property: 'product:price:currency', content: `${currency}` },
+    ...productCategories(product),
     ...productImage(selectedItem),
+    productPrice({ selectedItem, disableOffers }),
     productAvailability(selectedItem),
-    productPrice(selectedItem),
   ].filter(Boolean) as MetaTag[]
 
   return (
@@ -111,8 +116,13 @@ function productAvailability(selectedItem?: SKU): MetaTag {
   return { property: 'product:availability', content: `${availability}` }
 }
 
-function productPrice(selectedItem?: SKU): MetaTag | null {
-  const { disableOffers } = useAppSettings()
+function productPrice({
+  selectedItem,
+  disableOffers,
+}: {
+  selectedItem?: SKU
+  disableOffers: boolean
+}): MetaTag | null {
   const seller = selectedItem?.sellers.find(
     ({ commertialOffer }) => commertialOffer.AvailableQuantity > 0
   )
@@ -129,6 +139,17 @@ function productPrice(selectedItem?: SKU): MetaTag | null {
     property: 'product:price:amount',
     content: `${seller.commertialOffer.spotPrice}`,
   }
+}
+
+function productCategories(product?: Product) {
+  if (!product?.categories?.length) {
+    return []
+  }
+
+  return product.categories.map(category => ({
+    property: 'product:category',
+    content: category,
+  }))
 }
 
 export default ProductOpenGraph
