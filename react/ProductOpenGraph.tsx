@@ -46,14 +46,14 @@ function ProductOpenGraph() {
 
   try {
     const settings = getSettings('vtex.store')
-
+  
     if (settings) {
-      const { storeName, titleTag: storeTitleTag } = settings
-      const suffix =
-        (storeTitleTag || storeName) && ` - ${storeTitleTag || storeName}`
-
-      if (suffix) {
-        title += suffix
+      if (!settings.removeStoreNameTitle) {
+        const { storeName, titleTag: storeTitleTag } = settings
+        const suffix = (storeTitleTag || storeName) && ` - ${storeTitleTag || storeName}`
+        if (suffix) {
+          title += suffix
+        }
       }
     }
   } catch (e) {
