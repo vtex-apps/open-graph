@@ -44,21 +44,18 @@ function ProductOpenGraph() {
 
   let title = titleTag || productName
 
-  try {
-    const settings = getSettings('vtex.store')
-  
-    if (settings) {
-      if (!settings.removeStoreNameTitle) {
-        const { storeName, titleTag: storeTitleTag } = settings
-        const suffix = (storeTitleTag || storeName) && ` - ${storeTitleTag || storeName}`
-        if (suffix) {
-          title += suffix
-        }
+try {
+  const settings = getSettings('vtex.store')
+    if (!settings.removeStoreNameTitle) {
+      const { storeName, titleTag: storeTitleTag } = settings
+      const suffix = (storeTitleTag || storeName) && ` - ${storeTitleTag || storeName}`
+      if (suffix) {
+        title += suffix
       }
     }
-  } catch (e) {
-    console.error('Failed to suffix store name in title.', e)
-  }
+} catch (e) {
+  console.error('Failed to suffix store name in title.', e)
+}
 
   const metaTags = [
     { property: 'og:type', content: 'product' },
