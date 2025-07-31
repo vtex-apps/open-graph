@@ -50,7 +50,7 @@ function ProductOpenGraph() {
     if (!settings.removeStoreNameTitle) {
       const { storeName, titleTag: storeTitleTag } = settings
       const suffix =
-       (storeTitleTag || storeName) && ` - ${storeTitleTag || storeName}`
+        (storeTitleTag || storeName) && ` - ${storeTitleTag || storeName}`
 
       if (suffix) {
         title += suffix
