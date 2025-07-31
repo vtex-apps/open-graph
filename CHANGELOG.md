@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.4.1] - 2025-07-31
+
+### Fixed
+- The og:title was not respecting the removeStoreNameTitle tag from store settings.
+
 ### Changed
 
 - Update GitHub actions/cache to v4
