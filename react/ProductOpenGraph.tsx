@@ -47,7 +47,7 @@ function ProductOpenGraph() {
   try {
     const settings = getSettings('vtex.store')
 
-    if (settings) {
+    if (!settings.removeStoreNameTitle) {
       const { storeName, titleTag: storeTitleTag } = settings
       const suffix =
         (storeTitleTag || storeName) && ` - ${storeTitleTag || storeName}`
