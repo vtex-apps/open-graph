@@ -40,7 +40,10 @@ const priceProductContext = {
 }
 
 test('should not render product:price:amount when disableOffers is true', () => {
-  mockUseAppSettings.mockReturnValueOnce({ disableOffers: true, loading: false })
+  mockUseAppSettings.mockReturnValueOnce({
+    disableOffers: true,
+    loading: false,
+  })
   const { queryByTestId } = renderComponent(priceProductContext)
 
   expect(queryByTestId('product:price:amount')).toBeNull()
