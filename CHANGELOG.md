@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- `disableOffers` setting now correctly suppresses `product:price:amount` during SSR.
+
 ## [1.4.1] - 2025-08-13
 
 ### Fixed

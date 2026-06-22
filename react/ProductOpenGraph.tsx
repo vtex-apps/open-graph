@@ -21,12 +21,11 @@ interface MetaTag {
 }
 
 function ProductOpenGraph() {
-  const { disableOffers } = useAppSettings()
+  const { disableOffers, loading: settingsLoading } = useAppSettings()
   const productContext = useContext(ProductContext) as ProductContext
   const runtime = useRuntime() as RenderContext
-  const hasValue = productContext?.product
 
-  if (!hasValue) {
+  if ((!canUseDOM && settingsLoading) || !productContext?.product) {
     return null
   }
 
