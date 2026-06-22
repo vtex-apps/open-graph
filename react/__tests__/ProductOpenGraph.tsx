@@ -3,6 +3,16 @@ import { render } from '@vtex/test-tools/react'
 import { ProductContext } from 'vtex.product-context'
 
 import ProductOpenGraph from '../ProductOpenGraph'
+import useAppSettings from '../hooks/useAppSettings'
+
+jest.mock('../hooks/useAppSettings', () => ({
+  __esModule: true,
+  default: jest.fn(() => ({ disableOffers: false, loading: false })),
+}))
+
+const mockUseAppSettings = useAppSettings as jest.MockedFunction<
+  typeof useAppSettings
+>
 
 const renderComponent = (productContext: object) => {
   const helpers = render(
@@ -13,6 +23,34 @@ const renderComponent = (productContext: object) => {
 
   return helpers
 }
+
+const priceProductContext = {
+  product: {},
+  selectedItem: {
+    images: [],
+    sellers: [
+      {
+        commertialOffer: {
+          spotPrice: 10,
+          AvailableQuantity: 1,
+        },
+      },
+    ],
+  },
+}
+
+test('should not render product:price:amount when disableOffers is true', () => {
+  mockUseAppSettings.mockReturnValueOnce({ disableOffers: true, loading: false })
+  const { queryByTestId } = renderComponent(priceProductContext)
+
+  expect(queryByTestId('product:price:amount')).toBeNull()
+})
+
+test('should render product:price:amount when disableOffers is false', () => {
+  const { getByTestId } = renderComponent(priceProductContext)
+
+  expect(getByTestId('product:price:amount').innerHTML).toBe('10')
+})
 
 test('should have a brand', () => {
   const brand = 'Nike'

@@ -21,6 +21,8 @@ interface MetaTag {
   content: string
 }
 
+export const canUseDOM = true
+
 export const useRuntime = () => ({
   culture: {
     locale: 'en-US',

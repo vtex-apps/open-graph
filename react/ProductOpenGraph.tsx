@@ -25,7 +25,7 @@ function ProductOpenGraph() {
   const productContext = useContext(ProductContext) as ProductContext
   const runtime = useRuntime() as RenderContext
 
-  if (settingsLoading || !productContext?.product) {
+  if ((!canUseDOM && settingsLoading) || !productContext?.product) {
     return null
   }
 
