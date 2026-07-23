@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: open-graph
+  annotations:
+    github.com/project-slug: vtex-apps/open-graph
+spec:
+  type: other
+  lifecycle: unknown
+  owner: te-0013
